@@ -1,0 +1,17 @@
+<p>fizz-buzz works!</p>
+
+<form [formGroup]="fizzbuzzForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label>Character Name</label>
+      <input placeholder="Character Name" formControlName="chrctrName" class="form-control" />
+    </div>
+    <div>
+      <button type="submit" class="btn btn-primary">Check FizzBuzz</button>
+    </div>
+</form>
+
+<div *ngif=responses>
+    <ul>
+        <li *ngFor="let response of responses">{{response.input}} => {{response.response}}</li>
+    </ul>
+</div>
