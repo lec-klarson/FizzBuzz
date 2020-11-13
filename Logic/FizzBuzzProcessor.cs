@@ -6,10 +6,13 @@ namespace FizzBuzz.Logic
 {
     public class FizzBuzzProcessor
     {
-        public IEnumerable<FizzBuzzResponse> ProcessFizzBuzz(IEnumerable<FizzBuzzInput> inputItems)
+        public IEnumerable<FizzBuzzResponse> ProcessFizzBuzz(string inputItems)
         {
+
+            string[] inputs = inputItems.Split(',');
+
             var x = new List<FizzBuzzResponse>();
-            foreach (var input in inputItems)
+            foreach (var input in inputs)
             {
                 var s = FizzBuzzResponse(input);  
                 x.AddRange(s);     
@@ -17,12 +20,12 @@ namespace FizzBuzz.Logic
             return x;
         }
 
-        private List<FizzBuzzResponse> FizzBuzzResponse(FizzBuzzInput input)
+        private List<FizzBuzzResponse> FizzBuzzResponse(string inputStr)
         {
             var responses = new List<FizzBuzzResponse>();
             int value;
 
-            if(int.TryParse(input.input, out value))
+            if(int.TryParse(inputStr, out value))
             {
                 var fizzResponse = GetFizzBuzz(value,3);
                 var buzzResponse = GetFizzBuzz(value,5);
@@ -46,7 +49,7 @@ namespace FizzBuzz.Logic
                 responses.Add(buzzResponse);
             }
 
-            responses.Add(new FizzBuzzResponse() { input = input.input, response = "Invalid Item" });               
+            responses.Add(new FizzBuzzResponse() { input = inputStr, response = "Invalid Item" });               
             return responses; 
         }
 

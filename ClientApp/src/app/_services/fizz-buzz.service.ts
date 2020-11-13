@@ -8,15 +8,14 @@ import { FizzBuzzInput } from '../_models/fizzBuzzInput';
   providedIn: 'root'
 })
 export class FizzBuzzService {
-  data = [];
   private baseUrl;
   constructor( private http: HttpClient, @Inject('BASE_URL') baseUrl: string) { 
     this.baseUrl = baseUrl;
   }
 
-  getFizzBuzz(): Observable <FizzBuzzResponse>{
-    console.log(this.baseUrl +'fizzbuzz');
+  getFizzBuzz(fizzBuzzInputStr): Observable <FizzBuzzResponse>{
+    console.log(this.baseUrl +'fizzbuzz/' + fizzBuzzInputStr);
     
-    return this.http.post<FizzBuzzResponse>(this.baseUrl +'fizzbuzz', FizzBuzzInput);
+    return this.http.get<FizzBuzzResponse>(this.baseUrl +'fizzbuzz/' + fizzBuzzInputStr);
   }
 }

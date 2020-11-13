@@ -12,7 +12,7 @@ import {FizzBuzzService} from '../_services/fizz-buzz.service';
   styleUrls: ['./fizz-buzz.component.css']
 })
 export class FizzBuzzComponent implements OnInit {
-  inputs: FizzBuzzInput[] = [];
+  //inputs: FizzBuzzInput[] = [];
   responses: FizzBuzzResponse[] = [];
   fizzBuzzForm = new FormGroup({
     fizzBuzzInput: new FormControl('')
@@ -22,19 +22,17 @@ export class FizzBuzzComponent implements OnInit {
   ngOnInit() {
   }
 
-  checkForFizzBuzz(){
-
-  }
-
   onSubmit() {
     //var searchName = this.fizzbuzzForm.value.fizzBuzInput;
+
+    console.log("FizzBuz Form value: " + this.fizzBuzzForm.value.fizzBuzzInput);
     
     //if (searchName.length > 0) {
-      this.fizzBuzzService.getFizzBuzz().subscribe(
+      this.fizzBuzzService.getFizzBuzz(this.fizzBuzzForm.value.fizzBuzzInput).subscribe(
         responses => {
           this.responses.concat(responses);
         });
     //}
-    //console.log("FizzBuz Form value: " + this.fizzbuzzForm.value.fizzBuzInput);
+    
   }
 }
