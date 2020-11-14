@@ -15,7 +15,9 @@ export class FizzBuzzService {
 
   getFizzBuzz(fizzBuzzInputStr): Observable <FizzBuzzResponse>{
     console.log(this.baseUrl +'fizzbuzz/' + fizzBuzzInputStr);
-    
-    return this.http.get<FizzBuzzResponse>(this.baseUrl +'fizzbuzz/' + fizzBuzzInputStr);
+    var responses = this.http.get<FizzBuzzResponse>(this.baseUrl +'fizzbuzz/' + fizzBuzzInputStr);
+    console.log('Length:  ' + responses);
+
+    return responses;
   }
 }

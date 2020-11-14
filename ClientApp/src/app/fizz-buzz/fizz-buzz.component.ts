@@ -23,16 +23,13 @@ export class FizzBuzzComponent implements OnInit {
   }
 
   onSubmit() {
-    //var searchName = this.fizzbuzzForm.value.fizzBuzInput;
-
     console.log("FizzBuz Form value: " + this.fizzBuzzForm.value.fizzBuzzInput);
     
-    //if (searchName.length > 0) {
-      this.fizzBuzzService.getFizzBuzz(this.fizzBuzzForm.value.fizzBuzzInput).subscribe(
-        responses => {
-          this.responses.concat(responses);
-        });
-    //}
-    
+    this.fizzBuzzService.getFizzBuzz(this.fizzBuzzForm.value.fizzBuzzInput).subscribe(
+      responses => {
+        this.responses.concat(responses);
+      }); 
+
+    console.log("FizzBuzz Response Count:  " + this.responses.length);
   }
 }

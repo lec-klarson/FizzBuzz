@@ -1,5 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import {FizzBuzzResponse} from '../_models/fizzBuzzResponse';
 
 @Component({
   selector: 'app-fetch-data',
@@ -13,6 +14,7 @@ export class FetchDataComponent {
     http.get<WeatherForecast[]>(baseUrl + 'weatherforecast').subscribe(result => {
       this.forecasts = result;
     }, error => console.error(error));
+
   }
 
 }
