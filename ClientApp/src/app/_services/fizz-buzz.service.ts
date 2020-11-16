@@ -2,7 +2,6 @@ import { Inject, Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { FizzBuzzResponse } from '../_models/fizzBuzzResponse';
-import { FizzBuzzInput } from '../_models/fizzBuzzInput';
 
 @Injectable({
   providedIn: 'root'
@@ -13,11 +12,7 @@ export class FizzBuzzService {
     this.baseUrl = baseUrl;
   }
 
-  getFizzBuzz(fizzBuzzInputStr): Observable <FizzBuzzResponse>{
-    console.log(this.baseUrl +'fizzbuzz/' + fizzBuzzInputStr);
-    var responses = this.http.get<FizzBuzzResponse>(this.baseUrl +'fizzbuzz/' + fizzBuzzInputStr);
-    console.log('Length:  ' + responses);
-
-    return responses;
+  getFizzBuzz(fizzBuzzInputStr): Observable<FizzBuzzResponse[]>{
+    return this.http.get<FizzBuzzResponse[]>(this.baseUrl +'api/FB/get?inputStr=' + fizzBuzzInputStr);
   }
 }

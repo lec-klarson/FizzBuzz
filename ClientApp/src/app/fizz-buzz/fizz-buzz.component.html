@@ -1,6 +1,6 @@
-<form [formGroup]="fizzBuzzForm" (ngSubmit)="onSubmit()">
+<form class="form-padding" [formGroup]="fizzBuzzForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
-      <label>FizzBuss</label>
+      <label>FizzBuzz Coding Challenge</label>
       <input placeholder="Enter FizzBuzz Array" formControlName="fizzBuzzInput" class="form-control" />
     </div>
     <div>
@@ -9,7 +9,19 @@
 </form>
 
 <div *ngIf=responses>
-    <ul>
-        <li *ngFor="let response of responses">{{response.input}} => {{response.response}}</li>
-    </ul>
+  <h3>FizzBuzz Responses</h3>
+  <table mat-table [dataSource]="responses" class="mat-elevation-z8">
+    <ng-container matColumnDef="input">
+      <th class="input-width" mat-header-cell *matHeaderCellDef > Input </th>
+      <td mat-cell *matCellDef="let response"> {{response.input}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="response">
+      <th class="response-width" mat-header-cell *matHeaderCellDef> Response </th>
+      <td mat-cell *matCellDef="let response"> {{response.response}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
 </div>
